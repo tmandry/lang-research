@@ -4,7 +4,7 @@
 base_url = "https://lang-research.rust-lang.org"
 compile_sass = true
 generate_feeds = true
-feed_filenames = ["feed.xml"]
+feed_filenames = ["feed.xml", "posts.json"]
 build_search_index = false
 skip_content_templating = ["**"]
 taxonomies = [{ name = "tags", feed = true }]

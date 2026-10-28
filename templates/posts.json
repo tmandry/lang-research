@@ -1,0 +1,25 @@
+{#-
+    Machine-readable index of posts, used by other Project tooling
+    (for example, to comment on project goal tracking issues).
+    Rendered as a Zola feed, so it exists for the whole site and for each tag.
+-#}
+{% if term -%}
+  {% set tag = get_taxonomy_term(kind=taxonomy.name, term=term.name) -%}
+  {% set posts = tag.pages -%}
+{% else -%}
+  {% set section = get_section(path="_index.md") -%}
+  {% set posts = section.pages -%}
+{% endif -%}
+{% set entries = [
+    {
+        "url": page.permalink,
+        "title": page.title,
+        "date": page.date,
+        "updated": page.updated,
+        "authors": page.authors,
+        "description": page.description,
+        "tags": page.taxonomies.tags | default(value=[]),
+    }
+    for page in posts
+] -%}
+{{ {"version": 1, "posts": entries} | json_encode(pretty=true) | safe }}
