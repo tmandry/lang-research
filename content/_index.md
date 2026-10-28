@@ -1,21 +1,16 @@
 +++
-title = "Rust Blog"
-description = "Empowering everyone to build reliable and efficient software."
+title = "Rust Lang Research"
+description = "Research notes from people working on the design of the Rust language."
 sort_by = "permalink"
 generate_feeds = true
 [extra]
-index_title = "The Rust Programming Language Blog"
+index_title = "Rust Lang Research"
 index_html = """
-This is the <b>main Rust blog</b>. \
-<a href="https://www.rust-lang.org/governance/">Rust teams</a> \
-use this blog to announce major developments in the world of Rust."""
-maintained_by = "the Rust Teams"
-[[extra.see_also]]
-path = "/inside-rust/"
-text = """the "Inside Rust" blog"""
-[[extra.see_also]]
-path = "/releases/"
-text = "release announcements"
+This is the <b>Rust Lang Research</b> blog. Members of the Rust Project \
+working on language design use it to share ideas that are still taking shape. \
+For announcements, see the <a href="https://blog.rust-lang.org/">main Rust blog</a> \
+and the <a href="https://blog.rust-lang.org/inside-rust/">"Inside Rust" blog</a>."""
+maintained_by = "the Rust lang-research team"
 [[extra.see_also]]
 path = "/tags/"
 text = "tagged posts"

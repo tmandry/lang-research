@@ -1,9 +1,10 @@
 # https://www.getzola.org/documentation/getting-started/configuration/
 
-base_url = "https://blog.rust-lang.org"
+# Placeholder; the final URL is still to be decided.
+base_url = "https://lang-research.rust-lang.org"
 compile_sass = true
 generate_feeds = true
-feed_filenames = ["feed.xml", "releases.json"]
+feed_filenames = ["feed.xml"]
 build_search_index = false
 skip_content_templating = ["**"]
 taxonomies = [{ name = "tags", feed = true }]
@@ -22,16 +23,4 @@ extra_themes = ["night-owl-light.json"]
 [extra]
 # Labels for tags, rendered on the /tags page.
 # If a label is missing for a tag, the tag will be rendered directly
-tag_labels = {
-    "clippy" = "Clippy",
-    "council" = "Leadership Council",
-    "crates.io" = "crates.io",
-    "funding" = "Funding",
-    "google-summer-of-code" = "Google Summer of Code",
-    "infrastructure" = "Infrastructure",
-    "maintainer-spotlight" = "Maintainer spotlight",
-    "program" = "Program management",
-    "release" = "Release announcements",
-    "rustup" = "Rustup",
-    "survey" = "Survey"
-}
+tag_labels = {}

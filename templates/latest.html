@@ -1,8 +1,0 @@
-{% set section = get_section(path="_index.md") -%}
-{%- for page in section.pages | reverse -%}{% if "release" in page.taxonomies.tags | default(value=[]) -%}
-<!DOCTYPE html>
-<meta charset="utf-8">
-<title>Redirect</title>
-<meta http-equiv="refresh" content="0; url={{ page.path | safe }}">
-<p><a href="{{ page.path | safe }}">Click here</a> to be redirected to the latest Rust release announcement.</p>
-{% break %}{% endif %}{% endfor -%}
