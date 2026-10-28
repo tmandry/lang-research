@@ -3,6 +3,8 @@ title = "Welcome to Rust Lang Research"
 date = 2026-11-01
 authors = ["Tyler Mandry"]
 description = "What this blog is for and how to post to it."
+[extra]
+discussion = "https://rust-lang.zulipchat.com/#narrow/channel/213817-t-lang"
 +++
 
 Rust has many active language research projects. As they progress, ideas

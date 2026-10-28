@@ -28,6 +28,13 @@ authors = ["Your Name"]
 description = "A one or two sentence summary."
 [taxonomies]
 tags = ["some-topic"]
+[extra]
+# All optional:
+discussion = "https://rust-lang.zulipchat.com/#narrow/..."  # Zulip topic for feedback
+cross_post = "https://example.com/my-original-post"       # becomes rel=canonical
+# updated = 2026-11-10        (top-level, next to `date`)
+# superseded_by = "/newer-post/"
+# audience_banner = false     # hide the "written for Project members" note
 +++
 
 Your post here.

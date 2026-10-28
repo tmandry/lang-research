@@ -21,6 +21,11 @@ extra_themes = ["night-owl-light.json"]
 
 # Put all your custom variables here
 [extra]
+# Shown at the top of every post unless the post sets `extra.audience_banner = false`.
+audience_banner = """
+This is a research note by a member of the Rust Project, written for other \
+Project members. It reflects the author's thinking at a point in time and is \
+not a decision or plan of the Rust Project."""
 # Labels for tags, rendered on the /tags page.
 # If a label is missing for a tag, the tag will be rendered directly
 tag_labels = {}
