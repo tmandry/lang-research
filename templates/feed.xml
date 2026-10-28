@@ -3,15 +3,13 @@
   {% set tag = get_taxonomy_term(kind=taxonomy.name, term=term.name) -%}
   {% set feed_path = tag.path -%}
   {% set feed_title = 'Posts tagged "' ~ tag.name ~ '" | ' ~ section.title -%}
-  {#- Blog posts have no Zola `date`, so sort them by the date in their path. -#}
-  {% set dated_pages = [{"date": page.components[-4:], "page": page} for page in tag.pages] -%}
-  {% set posts = [entry.page for entry in dated_pages | sort(attribute="date") | reverse] -%}
+  {% set posts = tag.pages -%}
 {% else -%}
   {% set section_path = feed_url | trim_start(pat=config.base_url ~ "/") | trim_end(pat="feed.xml") -%}
   {% set section = get_section(path=section_path ~ "_index.md") -%}
   {% set feed_path = section.path -%}
   {% set feed_title = section.title -%}
-  {% set posts = section.pages | reverse -%}
+  {% set posts = section.pages -%}
 {% endif -%}
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
@@ -31,13 +29,8 @@
     <entry>
         <title>{{<escape_hbs input={page.title} />}}</title>
         <link rel="alternate" href="{{ config.base_url | safe }}{{<escape_hbs input={page.path} />}}" type="text/html" title="{{<escape_hbs input={page.title} />}}" />
-        {%- set num_comps = page.components | length %}
-        {%- if num_comps < 4 %}{{ throw(message="Missing date in 'path' key, required format: '[inside-rust/]YYYY/MM/DD/slug-of-your-choice'") }}{% endif %}
-        {%- set year = page.components | nth(n=num_comps - 4) %}
-        {%- set month = page.components | nth(n=num_comps - 3) %}
-        {%- set day = page.components | nth(n=num_comps - 2) %}
-        <published>{{ year }}-{{ month }}-{{ day }}T00:00:00+00:00</published>
-        <updated>{{ year }}-{{ month }}-{{ day }}T00:00:00+00:00</updated>
+        <published>{{ page.date | date(format="%Y-%m-%dT%H:%M:%S+00:00") }}</published>
+        <updated>{% if page.updated %}{{ page.updated | date(format="%Y-%m-%dT%H:%M:%S+00:00") }}{% else %}{{ page.date | date(format="%Y-%m-%dT%H:%M:%S+00:00") }}{% endif %}</updated>
         <id>{{ config.base_url | safe }}{{<escape_hbs input={page.path} />}}</id>
         <content type="html" xml:base="{{ config.base_url | safe }}{{<escape_hbs input={page.path} />}}">{{<escape_hbs input={page.content} />}}</content>
 

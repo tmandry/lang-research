@@ -1,7 +1,7 @@
 +++
 title = "Rust Lang Research"
 description = "Research notes from people working on the design of the Rust language."
-sort_by = "permalink"
+sort_by = "date"
 generate_feeds = true
 [extra]
 index_title = "Rust Lang Research"

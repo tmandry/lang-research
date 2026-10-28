@@ -4,7 +4,7 @@
   <div class="container flex flex-column flex-row-l justify-between-l">
     <div class="mw7-l">
       <p>
-        These are the Rust blog posts with the <b>{{ config.extra.tag_labels[term.name] or term.name }}</b> tag.
+        These are the posts with the <b>{{ config.extra.tag_labels[term.name] or term.name }}</b> tag.
         You can follow them with the <a href="{{ term.permalink | safe }}feed.xml">feed</a>
         or browse <a href="{{ config.base_url | safe }}/tags/">all tags</a>.
       </p>
@@ -16,18 +16,14 @@
    <div class="w-100 mw-none ph3 mw8-m mw9-l center f3">
 
     <table class="post-list collapse w-100 f2-l f2-m f3-s">
-    {#- Blog posts have no Zola `date`, so sort them by the date in their path. #}
-    {%- set dated_pages = [{"date": page.components[-4:], "page": page} for page in term.pages] %}
-    {%- set posts = [entry.page for entry in dated_pages | sort(attribute="date") | reverse] %}
+    {%- set posts = term.pages %}
     {%- for page in posts %}
-      {%- set year = page.components[-4] | int %}
-      {%- set month = page.components[-3] | int %}
-      {%- set day = page.components[-2] | int %}
-      {%- if loop.first or posts[loop.index0 - 1].components[-4] | int != year %}
+      {%- set year = page.date | date(format="%Y") | int %}
+      {%- if loop.first or posts[loop.index0 - 1].date | date(format="%Y") | int != year %}
       {{<show_year year={year} />}}
       {%- endif %}
       <tr>
-        <td class="tr o-60 pr4 pr5-l bn">{{<month_name num={month} />}}&nbsp;{{ day }}</td>
+        <td class="tr o-60 pr4 pr5-l bn">{{<month_name num={page.date | date(format="%m") | int} />}}&nbsp;{{ page.date | date(format="%d") | int }}</td>
         <td class="bn"><a href="{{ config.base_url | safe }}{{ page.path | safe }}">{{<escape_hbs input={page.title} />}}</a></td>
       </tr>
     {%- endfor %}

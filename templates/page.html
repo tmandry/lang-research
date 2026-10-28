@@ -1,10 +1,8 @@
 {% extends "layout.html" -%}
 {% block page -%}
-{% set num_comps = page.components | length -%}
-{% if num_comps < 4 %}{{ throw(message="Missing date in 'path' key, required format: '[inside-rust/]YYYY/MM/DD/slug-of-your-choice'") }}{% endif -%}
-{% set year = page.components | nth(n=num_comps - 4) | int -%}
-{% set month = page.components | nth(n=num_comps - 3) | int -%}
-{% set day = page.components | nth(n=num_comps - 2) | int -%}
+{% set year = page.date | date(format="%Y") | int -%}
+{% set month = page.date | date(format="%m") | int -%}
+{% set day = page.date | date(format="%d") | int -%}
 <section id="{{<escape_hbs input={page.title} />}}" class="white">
   <div class="w-100 mw-none ph3 mw8-m mw8-l center f3">
     <header>
