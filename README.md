@@ -70,6 +70,14 @@ post's goals with their tracking issue numbers.
 
 Anyone with write access to this repository may merge their own post once CI passes.
 
+### Cross-posting
+
+To publish something you already wrote (a HackMD, or Markdown on GitHub), you can
+open a pull request as above, or fill in the
+[cross-post form](.github/ISSUE_TEMPLATE/cross-post.yml). The form asks you to
+confirm the license explicitly. Turning a submitted form into a post
+automatically is planned but not built yet.
+
 ## License
 
 Like the main Rust blog, this content is licensed under either of

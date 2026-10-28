@@ -1,0 +1,69 @@
+# Form for asking to cross-post an existing document to the blog.
+#
+# Not wired up yet: a workflow that turns a submitted form into a post is
+# planned for after launch. The required checkbox is the important part: it
+# records the author's agreement to the license, which a bot fetching a link
+# can't assume.
+#
+# The fields can be prefilled from a link, e.g. from Zulip:
+#   https://github.com/rust-lang/lang-research/issues/new?template=cross-post.yml&source=<url>
+name: Cross-post a document
+description: Publish an existing HackMD or GitHub Markdown document on Rust Lang Research.
+title: "Cross-post: "
+labels: ["cross-post"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form to publish a document you wrote somewhere else. You must be
+        a member of a lang team or a project goal owner, or post together with one.
+  - type: input
+    id: source
+    attributes:
+      label: Source URL
+      description: A HackMD link or a link to a Markdown file on GitHub. Leave empty if you paste the Markdown below.
+      placeholder: https://hackmd.io/...
+  - type: textarea
+    id: markdown
+    attributes:
+      label: Markdown
+      description: Paste the document here instead of linking to it (useful for long documents or files shared on Zulip).
+      render: markdown
+  - type: input
+    id: title
+    attributes:
+      label: Title
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Summary
+      description: One or two sentences, shown on the index page.
+    validations:
+      required: true
+  - type: input
+    id: goals
+    attributes:
+      label: Project goals
+      description: Comma-separated goal slugs, e.g. `field-projections, in-place-init`.
+  - type: input
+    id: tags
+    attributes:
+      label: Tags
+      description: Comma-separated, e.g. `places, borrowck`.
+  - type: input
+    id: original
+    attributes:
+      label: Original URL (if already published elsewhere)
+      description: Used as the canonical URL.
+  - type: checkboxes
+    id: license
+    attributes:
+      label: License
+      options:
+        - label: >-
+            I wrote this document, or have permission from all its authors, and I
+            license it under the MIT and Apache-2.0 licenses for publication on
+            Rust Lang Research.
+          required: true
