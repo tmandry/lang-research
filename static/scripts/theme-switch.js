@@ -71,8 +71,10 @@ let savedTheme = null;
 if (storageAvailable("localStorage")) {
     savedTheme = localStorage.getItem("lang-research-theme");
 }
+// Unlike the main Rust blog, default to the dark theme rather than the
+// system preference, so this blog is visually distinct.
 if (savedTheme) {
     renderTheme(savedTheme);
 } else {
-    setThemeToSystemPref();
+    renderTheme("dark");
 }

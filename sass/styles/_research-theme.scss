@@ -1,0 +1,29 @@
+// Rust Lang Research palette.
+//
+// Overrides the variables inherited from blog.rust-lang.org so this blog is
+// recognizably different from the main and "Inside Rust" blogs: dark by
+// default (see layout.html and theme-switch.js), an ink-violet background,
+// and a mint accent in place of the main blog's yellow.
+
+$research-accent: #7fd1b9;
+$research-accent-strong: #3fa58a;
+
+:root, :root:not([data-theme]) {
+  --yellow: #{$research-accent-strong};
+}
+
+:root[data-theme='dark'] {
+  --yellow: #{$research-accent};
+  --red: #{$research-accent-strong};
+  --body-background-color: #16141f;
+  --blockquote-bg-color: rgba(127, 209, 185, 0.06);
+  --blockquote-left-border-color: #{$research-accent-strong};
+  --code-bg-color: rgba(127, 209, 185, 0.05);
+  --code-border-color: rgba(127, 209, 185, 0.25);
+  --theme-popup-bg: #110f18;
+}
+
+:root[data-theme='dark'] .post a,
+:root[data-theme='dark'] header a {
+  color: #{$research-accent};
+}
