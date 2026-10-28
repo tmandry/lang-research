@@ -1,0 +1,29 @@
+{% extends "layout.html" -%}
+{% block page -%}
+<header class="mt3 mt0-ns mb4-ns">
+  <div class="container flex flex-column flex-row-l justify-between-l">
+    <div class="mw8-l">
+      <p>
+        Posts about the project goal <b>{{ page.title }}</b>
+        (<a href="{{ page.extra.doc_url | safe }}">{{ page.extra.latest_period }} goal</a>,
+        <a href="{{ page.extra.issue_url | safe }}">tracking issue #{{ page.extra.issue }}</a>).
+        See <a href="{{ config.base_url | safe }}/goals/">all goals with posts</a>.
+      </p>
+    </div>
+  </div>
+</header>
+
+<section id="posts" class="posts">
+  <div class="w-100 mw-none ph3 mw8-m mw9-l center f3">
+    <table class="post-list collapse w-100 f2-l f2-m f3-s">
+    {%- for path in page.extra.posts %}
+      {%- set p = get_page(path=path) %}
+      <tr>
+        <td class="tr o-60 pr4 pr5-l bn">{{ p.date | date(format="%b %-d, %Y") }}</td>
+        <td class="bn"><a href="{{ config.base_url | safe }}{{ p.path | safe }}">{{<escape_hbs input={p.title} />}}</a></td>
+      </tr>
+    {%- endfor %}
+    </table>
+  </div>
+</section>
+{%- endblock page %}

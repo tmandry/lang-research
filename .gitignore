@@ -21,3 +21,6 @@
 /static/styles/noscript.css
 
 /crates/snapshot/src/snapshots
+/data/goals.json
+/content/goals/
+/.goals-checkout/

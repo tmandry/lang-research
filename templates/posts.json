@@ -10,6 +10,7 @@
   {% set section = get_section(path="_index.md") -%}
   {% set posts = section.pages -%}
 {% endif -%}
+{% set goals = load_data(path="data/goals.json", required=false) -%}
 {% set entries = [
     {
         "url": page.permalink,
@@ -19,6 +20,7 @@
         "authors": page.authors,
         "description": page.description,
         "tags": page.taxonomies.tags | default(value=[]),
+        "goals": goals.post_goals[page.relative_path] | default(value=[]) if goals else [],
     }
     for page in posts
 ] -%}

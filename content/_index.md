@@ -14,4 +14,7 @@ maintained_by = "the Rust lang-research team"
 [[extra.see_also]]
 path = "/tags/"
 text = "tagged posts"
+[[extra.see_also]]
+path = "/goals/"
+text = "posts by project goal"
 +++

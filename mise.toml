@@ -1,6 +1,11 @@
 [tasks]
 zola = "zola"
 serve = "zola serve --fast --open"
+goals = """
+[ -d .goals-checkout ] || git clone --depth 1 https://github.com/rust-lang/goals .goals-checkout
+git -C .goals-checkout pull --ff-only
+cargo run -p goals_index -- .goals-checkout
+"""
 
 [tools]
 zola = "0.23.6"

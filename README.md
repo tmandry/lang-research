@@ -16,6 +16,14 @@ zola serve --open
 
 If you use [mise](https://mise.jdx.dev), `mise run serve` uses the pinned Zola version.
 
+The site builds without project goal data, but goal links and goal pages only
+appear after you generate it:
+
+```sh
+mise run goals   # or: git clone https://github.com/rust-lang/goals .goals-checkout
+                 #     cargo run -p goals_index -- .goals-checkout
+```
+
 ## Writing a post
 
 Add a Markdown file under `content/`:
@@ -30,6 +38,7 @@ description = "A one or two sentence summary."
 tags = ["some-topic"]
 [extra]
 # All optional:
+goals = ["field-projections"]   # project goals this post is about
 discussion = "https://rust-lang.zulipchat.com/#narrow/..."  # Zulip topic for feedback
 cross_post = "https://example.com/my-original-post"       # becomes rel=canonical
 # updated = 2026-11-10        (top-level, next to `date`)
@@ -39,6 +48,25 @@ cross_post = "https://example.com/my-original-post"       # becomes rel=canonica
 
 Your post here.
 ```
+
+### Project goals
+
+List the [project goals](https://goals.rust-lang.org/) a post is about in
+`extra.goals`. Use the goal's slug, i.e. its file name in
+[rust-lang/goals](https://github.com/rust-lang/goals/tree/main/src) without the
+period: `field-projections`, not `2026/field-projections`.
+
+- Any slug the goal has had works. Goals that carry over between periods keep
+  their tracking issue, so `in-place-initialization` (2025h2) and `in-place-init`
+  (2026) are the same goal and share one page at `/goals/in-place-init/`.
+- If a slug was used by two different goals, CI asks you to pick one with
+  `slug@period`, e.g. `macro-improvements@2026`.
+- `goals#395` (the tracking issue) also works.
+
+Each goal with posts gets a page under `/goals/`, and `posts.json` lists each
+post's goals with their tracking issue numbers.
+
+### Merging
 
 Anyone with write access to this repository may merge their own post once CI passes.
 

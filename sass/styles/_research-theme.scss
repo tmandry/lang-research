@@ -36,3 +36,17 @@ $research-accent-strong: #3fa58a;
   font-size: 0.9em;
   font-style: italic;
 }
+
+.post-goals {
+  margin-top: 0.5rem;
+  font-size: 0.85em;
+}
+
+.goal-chip {
+  display: inline-block;
+  margin: 0.15rem 0.25rem;
+  padding: 0.05rem 0.6rem;
+  border: 1px solid var(--yellow);
+  border-radius: 1rem;
+  text-decoration: none;
+}

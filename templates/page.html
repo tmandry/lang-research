@@ -14,6 +14,16 @@
     {% if page.updated %}&middot; <span class="i">updated {{ page.updated | date(format="%b %-d, %Y") }}</span>{% endif %}
     </div>
 
+    {%- set goals = load_data(path="data/goals.json", required=false) %}
+    {%- if goals and goals.post_goals is containing(pat=page.relative_path) %}
+    <div class="post-goals">
+      Project goal{{ goals.post_goals[page.relative_path] | length | pluralize }}:
+      {%- for g in goals.post_goals[page.relative_path] %}
+      <a class="goal-chip" href="{{ config.base_url | safe }}/goals/{{ g.slug }}/">{{ g.title }}</a>
+      {%- endfor %}
+    </div>
+    {%- endif %}
+
     {%- set show_banner = true %}
     {%- if page.extra is containing(pat="audience_banner") %}{% set show_banner = page.extra.audience_banner %}{% endif %}
     {%- if show_banner %}
