@@ -30,7 +30,10 @@
       {%- endif %}
       <tr>
         <td class="tr o-60 pr4 pr5-l bn">{{<month_name num={page.date | date(format="%m") | int} />}}&nbsp;{{ page.date | date(format="%d") | int }}</td>
-        <td class="bn"><a href="{{ config.base_url | safe }}{{ page.path | safe }}">{{<escape_hbs input={page.title} />}}</a></td>
+        <td class="bn">
+          <a href="{{ config.base_url | safe }}{{ page.path | safe }}">{{<escape_hbs input={page.title} />}}</a>
+          <div class="post-summary">{{ page.authors | join(sep=", ") }}{% if page.description %} &mdash; {{ page.description }}{% endif %}</div>
+        </td>
       </tr>
     {%- endfor %}
     </table>
