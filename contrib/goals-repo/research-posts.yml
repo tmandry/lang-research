@@ -1,0 +1,33 @@
+# Copy to rust-lang/goals as .github/workflows/research-posts.yml
+# (together with research_posts.py, e.g. under scripts/).
+name: Research blog posts
+
+on:
+  schedule:
+    - cron: '15,45 * * * *'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: Print comments instead of posting them
+        type: boolean
+        default: true
+
+permissions:
+  issues: write
+  contents: read
+
+concurrency:
+  group: research-posts
+  cancel-in-progress: false
+
+jobs:
+  comment:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: >
+          python3 scripts/research_posts.py
+          --feed https://lang-research.rust-lang.org/posts.json
+          ${{ inputs.dry_run && '--dry-run' || '' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
