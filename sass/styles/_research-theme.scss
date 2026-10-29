@@ -5,8 +5,9 @@
 // default (see layout.html and theme-switch.js), an ink-violet background,
 // and a mint accent in place of the main blog's yellow.
 
-$research-accent: #39ff14;  // phosphor green
-$research-accent-strong: #1a8a00;
+// A muted terminal green: still reads as "hacker", but easy on the eyes.
+$research-accent: #98c379;
+$research-accent-strong: #3d7a2e;
 
 :root, :root:not([data-theme]) {
   --yellow: #{$research-accent-strong};
@@ -17,10 +18,10 @@ $research-accent-strong: #1a8a00;
   --red: #{$research-accent-strong};
   --body-background-color: #0a0d0a;
   --gray: #0f140f;
-  --blockquote-bg-color: rgba(57, 255, 20, 0.06);
+  --blockquote-bg-color: rgba(152, 195, 121, 0.06);
   --blockquote-left-border-color: #{$research-accent-strong};
-  --code-bg-color: rgba(57, 255, 20, 0.05);
-  --code-border-color: rgba(57, 255, 20, 0.25);
+  --code-bg-color: rgba(152, 195, 121, 0.05);
+  --code-border-color: rgba(152, 195, 121, 0.25);
   --theme-popup-bg: #050705;
 }
 
@@ -106,14 +107,31 @@ div.brand span.wordmark-accent::after {
   content: "_";
 }
 
+// Soft, rounded goal chips: a tinted pill rather than a hard box.
 .goal-chip {
-  border-radius: 0;
+  border-radius: 999px;
+  border: 1px solid rgba(152, 195, 121, 0.35);
+  background-color: rgba(152, 195, 121, 0.12);
+  padding: 0.1rem 0.7rem;
   font-family: $research-mono;
+  font-size: 0.9em;
+  text-decoration: none !important;
+  transition: background-color 0.15s ease;
+}
+
+.goal-chip:hover {
+  background-color: rgba(152, 195, 121, 0.22);
 }
 
 .goal-chip::before {
   content: "#";
-  opacity: 0.6;
+  margin-right: 0.1em;
+  opacity: 0.5;
+}
+
+:root:not([data-theme='dark']) .goal-chip {
+  border-color: rgba(61, 122, 46, 0.3);
+  background-color: rgba(61, 122, 46, 0.08);
 }
 
 .audience-banner {
