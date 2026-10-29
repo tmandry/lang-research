@@ -1,4 +1,4 @@
-// Rust Lang Research palette.
+// Rust Lang Research palette and identity.
 //
 // Overrides the variables inherited from blog.rust-lang.org so this blog is
 // recognizably different from the main and "Inside Rust" blogs: dark by
@@ -56,4 +56,24 @@ $research-accent-strong: #3fa58a;
   font-size: 0.7em;
   font-style: italic;
   opacity: 0.75;
+}
+
+// Identity: the accent color is used in both themes, so the blog doesn't
+// depend on dark mode to look different from the main Rust blog.
+
+body {
+  border-top: 6px solid var(--yellow);
+}
+
+// `div.brand span` (from app.scss) gives every span a negative margin; undo it
+// for the inner span so the space before "Lang Research" survives.
+div.brand span.wordmark-accent {
+  display: inline;
+  margin-left: 0;
+  color: var(--yellow);
+}
+
+:root:not([data-theme='dark']) .post a,
+:root:not([data-theme='dark']) header a {
+  color: #{$research-accent-strong};
 }
