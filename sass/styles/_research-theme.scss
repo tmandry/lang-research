@@ -80,26 +80,25 @@ div.brand span.wordmark-accent {
 }
 
 // --- Hacker variant -------------------------------------------------------
-$research-mono: ui-monospace, "JetBrains Mono", "Fira Mono", "DejaVu Sans Mono", Menlo, Consolas, monospace;
+$research-mono: Menlo, ui-monospace, "SF Mono", "DejaVu Sans Mono", Consolas, monospace;
 
-div.brand .wordmark,
 section header h2, .post h2, h3 {
   font-family: $research-mono;
   font-weight: 700;
   letter-spacing: -0.02em;
 }
 
-div.brand span.wordmark-accent::after {
-  content: "_";
-  animation: research-blink 1.1s steps(1) infinite;
-}
-
-@keyframes research-blink {
-  50% { opacity: 0; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  div.brand span.wordmark-accent::after { animation: none; }
+// Wordmark: "Rust" stays in the main blog's slab font; "Lang Research" is
+// monospace. Monospace glyphs (and their spaces) are wider than the slab's,
+// so shrink the mono part slightly and tighten its word spacing so the two
+// halves read as one name.
+div.brand span.wordmark-accent {
+  font-family: $research-mono;
+  font-weight: 700;
+  font-size: 0.9em;
+  letter-spacing: -0.03em;
+  word-spacing: -0.3em;
+  margin-left: -0.12em;
 }
 
 .goal-chip {
