@@ -46,7 +46,9 @@ jobs:
             | tar xz -C /usr/local/bin zola
           zola --version
       - run: zola check --skip-external-links
-      - run: zola build
+      # Build for wherever this repository's Pages site lives, so forks
+      # (e.g. a personal preview at <user>.github.io/lang-research) work too.
+      - run: zola build --base-url "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}"
       - run: touch public/.nojekyll
       - uses: actions/upload-pages-artifact@v3
         with:
