@@ -27,7 +27,7 @@ Why this design:
 Try it without posting anything:
 
 ```sh
-python3 research_posts.py --feed https://lang-research.rust-lang.org/posts.json --dry-run
+python3 research_posts.py --feed https://rust-lang.github.io/lang-research/posts.json --dry-run
 # or against a local build:
 zola serve &   # then
 python3 research_posts.py --feed http://127.0.0.1:1111/posts.json --dry-run

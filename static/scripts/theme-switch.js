@@ -1,9 +1,13 @@
 "use strict";
 
+// The site may be served from a subpath (e.g. rust-lang.github.io/lang-research/),
+// so derive the site root from this script's own URL.
+const siteRoot = document.currentScript.src.replace(/scripts\/theme-switch\.js(\?.*)?$/, "");
+
 // val: "light" | "dark"
 function renderTheme(val) {
     document.documentElement.setAttribute("data-theme", val);
-    document.getElementById("syntax-theme").href = `/giallo-${val}.css`
+    document.getElementById("syntax-theme").href = `${siteRoot}giallo-${val}.css`
 }
 
 function changeThemeTo(val) {
