@@ -101,6 +101,11 @@ div.brand span.wordmark-accent {
   margin-left: -0.12em;
 }
 
+// A static terminal cursor after the wordmark.
+div.brand span.wordmark-accent::after {
+  content: "_";
+}
+
 .goal-chip {
   border-radius: 0;
   font-family: $research-mono;
