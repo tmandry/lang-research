@@ -22,5 +22,5 @@
 
 /crates/snapshot/src/snapshots
 /data/goals.json
-/content/goals/
+/content/projects/
 /.goals-checkout/

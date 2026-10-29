@@ -58,12 +58,12 @@ period: `field-projections`, not `2026/field-projections`.
 
 - Any slug the goal has had works. Goals that carry over between periods keep
   their tracking issue, so `in-place-initialization` (2025h2) and `in-place-init`
-  (2026) are the same goal and share one page at `/goals/in-place-init/`.
+  (2026) are the same goal and share one page at `/projects/in-place-init/`.
 - If a slug was used by two different goals, CI asks you to pick one with
   `slug@period`, e.g. `macro-improvements@2026`.
 - `goals#395` (the tracking issue) also works.
 
-Each goal with posts gets a page under `/goals/`, and `posts.json` lists each
+Each goal with posts gets a "research project" page under `/projects/`, and `posts.json` lists each
 post's goals with their tracking issue numbers.
 
 ### Merging

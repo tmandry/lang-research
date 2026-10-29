@@ -17,9 +17,9 @@
     {%- set goals = load_data(path="data/goals.json", required=false) %}
     {%- if goals and goals.post_goals is containing(pat=page.relative_path) %}
     <div class="post-goals">
-      Project goal{{ goals.post_goals[page.relative_path] | length | pluralize }}:
+      Project{{ goals.post_goals[page.relative_path] | length | pluralize }}:
       {%- for g in goals.post_goals[page.relative_path] %}
-      <a class="goal-chip" href="{{ config.base_url | safe }}/goals/{{ g.slug }}/">{{ g.title }}</a>
+      <a class="goal-chip" href="{{ config.base_url | safe }}/projects/{{ g.slug }}/">{{ g.title }}</a>
       {%- endfor %}
     </div>
     {%- endif %}
