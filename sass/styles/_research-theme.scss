@@ -5,8 +5,8 @@
 // default (see layout.html and theme-switch.js), an ink-violet background,
 // and a mint accent in place of the main blog's yellow.
 
-$research-accent: #7fd1b9;
-$research-accent-strong: #3fa58a;
+$research-accent: #ffcc00;  // hazard yellow
+$research-accent-strong: #8a6500;
 
 :root, :root:not([data-theme]) {
   --yellow: #{$research-accent-strong};
@@ -15,12 +15,13 @@ $research-accent-strong: #3fa58a;
 :root[data-theme='dark'] {
   --yellow: #{$research-accent};
   --red: #{$research-accent-strong};
-  --body-background-color: #16141f;
-  --blockquote-bg-color: rgba(127, 209, 185, 0.06);
+  --body-background-color: #141414;
+  --gray: #1e1e1e;
+  --blockquote-bg-color: rgba(255, 204, 0, 0.06);
   --blockquote-left-border-color: #{$research-accent-strong};
-  --code-bg-color: rgba(127, 209, 185, 0.05);
-  --code-border-color: rgba(127, 209, 185, 0.25);
-  --theme-popup-bg: #110f18;
+  --code-bg-color: rgba(255, 204, 0, 0.05);
+  --code-border-color: rgba(255, 204, 0, 0.25);
+  --theme-popup-bg: #0d0d0d;
 }
 
 :root[data-theme='dark'] .post a,
@@ -76,4 +77,49 @@ div.brand span.wordmark-accent {
 :root:not([data-theme='dark']) .post a,
 :root:not([data-theme='dark']) header a {
   color: #{$research-accent-strong};
+}
+
+// --- Construction variant -------------------------------------------------
+$research-hazard: repeating-linear-gradient(
+  -45deg,
+  #ffcc00 0, #ffcc00 14px,
+  #111 14px, #111 28px
+);
+
+// Hazard-tape bar across the top, in both themes.
+body {
+  border-top: 0;
+}
+
+body::before {
+  content: "";
+  display: block;
+  height: 12px;
+  background: $research-hazard;
+}
+
+// The bar under post titles becomes hazard tape too.
+header .highlight,
+.white .highlight {
+  background: $research-hazard !important;
+  height: 10px;
+}
+
+div.brand .wordmark {
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.goal-chip {
+  border-radius: 0;
+  border: 0;
+  background-color: #ffcc00;
+  color: #111 !important;
+  font-weight: 600;
+}
+
+.audience-banner {
+  border-left: 0;
+  border-top: 6px solid transparent;
+  border-image: $research-hazard 6;
 }
